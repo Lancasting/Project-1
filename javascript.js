@@ -5,16 +5,17 @@ $(document).ready(function(){
 var queryURLStorm = "https://api.stormglass.io/v2/weather/point";
 var queryURLGoogle = "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY";
 var searchresults = $()
-$("search-button").on(click); {
+$("search-button").on(click, function() {
 $.ajax({
     url: queryURLStorm, queryURLGoogle,
     method: "GET"
   }).then(function(response) {
     console.log(response);
   })
-}
+})
 
 }) 
+
 
 
 
