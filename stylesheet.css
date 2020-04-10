@@ -1,0 +1,16 @@
+body, html {
+    height: 100%;
+  }
+  
+  .bg {
+    /* The image used */
+    background-image: url("https://mocah.org/uploads/posts/5341310-water-nature-sea-ocean-outdoors-sea-waves-general-luna-cloud-9-tower-philippines-surfing-drone-shot-siargao-island-siargao-beach-scenery-tsunami-aerial-view-landscape-sports-sport-free-picture.jpg");
+  
+    /* Full height */
+    height: 100%;
+  
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
