@@ -3,6 +3,11 @@ body  {
     background-size: cover;
     
   }
+
+.navbar {
+    background-image: url("https://mocah.org/uploads/posts/5341310-water-nature-sea-ocean-outdoors-sea-waves-general-luna-cloud-9-tower-philippines-surfing-drone-shot-siargao-island-siargao-beach-scenery-tsunami-aerial-view-landscape-sports-sport-free-picture.jpg");
+    background-size: cover;
+}
   
 #app-name {
     font-size: 80px;
@@ -11,14 +16,13 @@ body  {
     
 }
 
+
 .nav-link {
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color:white;
     
 }
 
-#search-button {
-    color: r;
-    
+.card-body {
+    background-color: royalblue
 }
