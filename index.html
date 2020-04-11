@@ -54,7 +54,7 @@
     <div class="row">
         <div class="col-md-2">
             <div class="input-group md-form form-sm form-2 pl-0">
-                <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+                <input class="form-control my-0 py-1 red-border" id="search-text" type="text" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
                     <button class="input-group-text red lighten-3" id="search-button"><i class="fa fa-search text-grey"
                             aria-hidden="true"></i></buton>
@@ -81,11 +81,22 @@
                 <div class="card">
                     <div class="card-body">
                       <h2>Results:</h2>
-                      <p>Weather Paramaters</p>
-                      <p>Weather Paramaters</p>
-                      <p>Weather Paramaters</p>
-                      <p>Weather Paramaters</p>
-                      <p>Weather Paramaters</p>
+                      <p id = "secondarySwellDirection"></p>
+                      <p id = "secondarySwellHeight"></p>
+                      <p id = "secondarySwellPeriod"></p>
+                      <p id = "windWaveDirection"></p>
+                      <p id = "windWaveHeight"></p>
+                      <p id = "windWavePeriod"></p>
+                      <p id = "swellDirection"></p>
+                      <p id = "swellHeight"></p>
+                      <p id = "swellPeriod"></p>
+                      <p id = "waveDirection"></p>
+                      <p id = "waveHeight"></p>
+                      <p id = "wavePeriod"></p>
+                      <p id = "windDirection"></p>
+                      <p id = "windSpeed"></p>
+                      <p id = "gust"></p>
+                      <p id = "waterTemperature"></p>
                     </div>
                 </div>
 
@@ -107,6 +118,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="javascript.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA60E-7YODoqYm16Aanxh8PoR4OXJugr_U&callback=initMap">
