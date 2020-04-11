@@ -26,3 +26,9 @@ body  {
 .card-body {
     background-color: royalblue
 }
+
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+}
