@@ -14,7 +14,36 @@
 //   })
 // })
 
-// }) 
+// })
+
+
+$("#secondarySwellDirection").text("Test");
+
+
+// open weater API to grab lat and long coordinates
+
+var APIKeyOpenWeather = "&appid=d67d379f19decbcad97f1f7549ca59f8"
+// var city = $("#search-text").val()
+// console.log(city)
+var city = "San Clemente"
+
+var queryURLOpenWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + APIKeyOpenWeather
+
+$.ajax({
+  url: queryURLOpenWeather,
+  method: "GET"
+}).then(function(response){
+  console.log(response);
+  console.log(response.coord.lon)
+  console.log(response.coord.lat);;
+  var lng = response.coord.lon
+  console.log(lng);
+  var lat = response.coord.lat
+  console.log(lat);
+})
+
+
+
 
 
 // This fetches the data from our storm glass API
@@ -38,3 +67,4 @@ fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=$
 }).then((response) => response.json()).then((jsonData) => {
   console.log(jsonData); //displays object data in console
 });
+
