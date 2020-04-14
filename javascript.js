@@ -17,7 +17,6 @@
 // })
 
 
-$("#secondarySwellDirection").text("Test");
 
 
 // open weater API to grab lat and long coordinates
@@ -25,7 +24,7 @@ $("#secondarySwellDirection").text("Test");
 var APIKeyOpenWeather = "&appid=d67d379f19decbcad97f1f7549ca59f8"
 // var city = $("#search-text").val()
 // console.log(city)
-var city = "San Clemente"
+var city = "Santa Monica"
 
 var queryURLOpenWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + APIKeyOpenWeather
 
@@ -66,6 +65,15 @@ fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=$
   }
 }).then((response) => response.json()).then((jsonData) => {
   console.log(jsonData); //displays object data in console
+  
+  let fiveDay = {}
+        for(let i = 0; i < jsonData.hours.length; i++) {
+          let dateArr = jsonData.hours[i].time.split('T')
+          if(!fiveDay[dateArr[0]]) {
+            fiveDay[dateArr[0]] = jsonData.hours[i];
+          }
+        }
+        // console.log(jsonData)
   
 });
 
