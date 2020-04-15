@@ -43,7 +43,10 @@ function newfunction(lat, lng) {
         'Authorization': APIKey
       }
     }).then((response) => response.json()).then((jsonData) => {
-  
+        let hours = $('.dropdown').val()
+        if(hours){
+            hours = 6;
+        }
       let fiveDay = {}
       for (let i = 0; i < 24; i++) {
         // use for 6 hour or 12 or 24
