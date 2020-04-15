@@ -28,7 +28,7 @@
 // This fetches the data from our storm glass API
 function newfunction(lat, lng) {
 
-  var APIKey = "8aca6f50-7acf-11ea-98e7-0242ac130002-8aca6ff0-7acf-11ea-98e7-0242ac130002"
+  var APIKey = "4470429a-793b-11ea-98e7-0242ac130002-4470434e-793b-11ea-98e7-0242ac130002"
   const params = [
     'secondarySwellDirection', 'secondarySwellHeight', 'secondarySwellPeriod',
     'windWaveDirection', 'windWaveHeight', 'windWavePeriod',
@@ -45,13 +45,22 @@ function newfunction(lat, lng) {
   }).then((response) => response.json()).then((jsonData) => {
 
     let fiveDay = {}
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 2; i++) {
       // use for 6 hour or 12 or 24
-      let dateArr = jsonData.hours[i].time.split('T')
-      console.log(dateArr);
-      if (!fiveDay[dateArr[0]]) {
-        fiveDay[dateArr[0]] = jsonData.hours[i];
-      }
+      //let dateArr = jsonData.hours[i].time.split('T')
+      // console.log(dateArr);
+      // if (!fiveDay[dateArr[0]]) {
+      //   fiveDay[dateArr[0]] = jsonData.hours[i];
+      // }
+
+      console.log(jsonData.hours[i]);
+
+      let cardBody = $("<div>").addClass("card-body")
+      let watertemp = $("<p>").addClass("card-subtitle").text("Water temp: " + jsonData.hours[i].waterTemperature.noaa);
+      $(".results").append(cardBody.append(watertemp));
+      
+      let windspeed = $("<p>").addClass("card-subtitle").text("Wind speed: " + jsonData.hours[i].windSpeed.icon + " MPH");
+      $(".results").append(cardBody.append(windspeed));
 
     }
     console.log(fiveDay)
