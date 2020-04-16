@@ -33,7 +33,6 @@ body  {
     background-color: grey;
 }
 .dropdown {
-    <style>
     /* Style The Dropdown Button */
     .dropbtn {
       background-color: #4CAF50;
@@ -91,3 +90,8 @@ body  {
       </div>
     </div>
 }
+
+.card-subtitle {
+    font-size: small;
+}
+

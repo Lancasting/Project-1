@@ -25,10 +25,34 @@
 //   console.log(lat);
 // })
 
+
+// Push all checked item boxes into array
+
+var checkboxes = document.querySelectorAll("input[type=checkbox]");
+var submit = document.getElementById("submit");
+
+function getChecked() {
+  var userParams = [];
+
+  for (var i = 0; i < checkboxes.length; i++) {
+    var checkbox = checkboxes[i];
+    if (checkbox.checked) userParams.push(checkbox.value);
+  }
+
+  return userParams;
+}
+
+submit.addEventListener("click", function () {
+  var checked = getChecked();
+  console.log(checked);
+});
+
 // This fetches the data from our storm glass API
+
 function newfunction(lat, lng) {
 
   var APIKey = "4470429a-793b-11ea-98e7-0242ac130002-4470434e-793b-11ea-98e7-0242ac130002"
+
   const params = [
     'secondarySwellDirection', 'secondarySwellHeight', 'secondarySwellPeriod',
     'windWaveDirection', 'windWaveHeight', 'windWavePeriod',
@@ -47,8 +71,13 @@ function newfunction(lat, lng) {
     let fiveDay = {}
     for (let i = 0; i < 2; i++) {
       // use for 6 hour or 12 or 24
-      //let dateArr = jsonData.hours[i].time.split('T')
-      // console.log(dateArr);
+      let dateArr = jsonData.hours[i].time.split('T')
+      console.log(dateArr);
+      console.log(dateArr[1]) //consoles time
+
+      dateArrTime = dateArr[1].substring(0, dateArr[1].length - 9); //removes strings from time to display as "00:00". can be used for easier conversion to MST
+      console.log(dateArrTime);
+      dateArrDate = moment(dateArr[0]).format("MMM Do YYYY"); // changes date format to month/day/year
       // if (!fiveDay[dateArr[0]]) {
       //   fiveDay[dateArr[0]] = jsonData.hours[i];
       // }
@@ -56,11 +85,26 @@ function newfunction(lat, lng) {
       console.log(jsonData.hours[i]);
 
       let cardBody = $("<div>").addClass("card-body")
+      let dateEl = $("<p>").addClass("title-text").text(dateArrDate); // date
+      let timeEl = $("<p>").addClass("title-text").text(dateArrTime); // time
       let watertemp = $("<p>").addClass("card-subtitle").text("Water temp: " + jsonData.hours[i].waterTemperature.noaa);
-      $(".results").append(cardBody.append(watertemp));
-      
       let windspeed = $("<p>").addClass("card-subtitle").text("Wind speed: " + jsonData.hours[i].windSpeed.icon + " MPH");
-      $(".results").append(cardBody.append(windspeed));
+      let gustEl = $("<p>").addClass("card-subtitle").text("Gust: " + jsonData.hours[i].gust.noaa)
+      let windDirectionEl = $("<p>").addClass("card-subtitle").text("Wind direction: " + jsonData.hours[i].windDirection.icon)
+      let wavePeriodEl = $("<p>").addClass("card-subtitle").text("Wave period: " + jsonData.hours[i].wavePeriod.icon)
+      let waveHeightEl = $("<p>").addClass("card-subtitle").text("Wave height: " + jsonData.hours[i].waveHeight.icon)
+      let swellPeriodEl = $("<p>").addClass("card-subtitle").text("Swell period: " + jsonData.hours[i].swellPeriod.icon)
+      let swellHeightEl = $("<p>").addClass("card-subtitle").text("Swell height: " + jsonData.hours[i].swellHeight.icon)
+      let swellDirectionEl = $("<p>").addClass("card-subtitle").text("Swell  direction: " + jsonData.hours[i].swellDirection.icon)
+      let windWavePeriodEl = $("<p>").addClass("card-subtitle").text("Wind wave period: " + jsonData.hours[i].windWavePeriod.icon)
+      let windWaveHeightEl = $("<p>").addClass("card-subtitle").text("Wind wave height: " + jsonData.hours[i].windWaveHeight.icon)
+      let windWaveDirectionEl = $("<p>").addClass("card-subtitle").text("Wind wave direction: " + jsonData.hours[i].windWaveDirection.icon)
+      let secondarySwellPeriodEl = $("<p>").addClass("card-subtitle").text("Secondary swell period: " + jsonData.hours[i].secondarySwellPeriod.noaa)
+      let secondarySwellHeightEl = $("<p>").addClass("card-subtitle").text("Secondary swell height: " + jsonData.hours[i].secondarySwellHeight.noaa)
+      let secondarySwellDirectionEl = $("<p>").addClass("card-subtitle").text("Secondary swell direction: " + jsonData.hours[i].secondarySwellDirection.noaa)
+
+      // append object data to results 
+      $(".results").append(cardBody.append(dateEl, timeEl, watertemp, windspeed, gustEl, windDirectionEl, wavePeriodEl, waveHeightEl, swellPeriodEl, swellHeightEl, swellDirectionEl, windWavePeriodEl, windWaveHeightEl, windWaveDirectionEl, secondarySwellPeriodEl, secondarySwellHeightEl, secondarySwellDirectionEl));
 
     }
     console.log(fiveDay)
@@ -68,6 +112,11 @@ function newfunction(lat, lng) {
 
   });
 
+}
+
+// function to clear results after each click
+function renderButtons() {
+  $(".results").empty();
 }
 
 function initMap() {
@@ -98,6 +147,7 @@ function initMap() {
 
     // make api call here to take in lat lng
     newfunction(lat, lng)
+    renderButtons();
 
   });
 }
