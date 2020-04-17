@@ -95,3 +95,6 @@ body  {
     font-size: small;
 }
 
+.progress-bar {
+    width: 41%;
+}
