@@ -28,12 +28,14 @@ body  {
 }
 
 #map {
-    width: 100%;
+    margin: auto;
+    width: 75%;
     height: 400px;
     background-color: grey;
 }
 .dropdown {
     /* Style The Dropdown Button */
+}
     .dropbtn {
       background-color: #4CAF50;
       color: white;
@@ -79,19 +81,17 @@ body  {
     .dropdown:hover .dropbtn {
       background-color: #3e8e41;
     }
-    </style>
-    
-    <div class="dropdown">
-      <button class="dropbtn">Dropdown</button>
-      <div class="dropdown-content">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </div>
-    </div>
-}
+  
+
 
 .card-subtitle {
     font-size: small;
 }
 
+.results {
+  overflow: scroll;
+  height: 500px;
+}
+#results{
+  background-color: white;
+}

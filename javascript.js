@@ -51,7 +51,7 @@ submit.addEventListener("click", function () {
 
 function newfunction(lat, lng) {
 
-  var APIKey = "4470429a-793b-11ea-98e7-0242ac130002-4470434e-793b-11ea-98e7-0242ac130002"
+  var APIKey = "8aca6f50-7acf-11ea-98e7-0242ac130002-8aca6ff0-7acf-11ea-98e7-0242ac130002"
 
   const params = [
     'secondarySwellDirection', 'secondarySwellHeight', 'secondarySwellPeriod',
@@ -69,7 +69,7 @@ function newfunction(lat, lng) {
   }).then((response) => response.json()).then((jsonData) => {
 
     let fiveDay = {}
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 24; i++) {
       // use for 6 hour or 12 or 24
       let dateArr = jsonData.hours[i].time.split('T')
       console.log(dateArr);
@@ -84,7 +84,7 @@ function newfunction(lat, lng) {
 
       console.log(jsonData.hours[i]);
 
-      let cardBody = $("<div>").addClass("card-body")
+      let cardBody = $("<div>").addClass("card-body col-md-4")
       let dateEl = $("<p>").addClass("title-text").text(dateArrDate); // date
       let timeEl = $("<p>").addClass("title-text").text(dateArrTime); // time
       let watertemp = $("<p>").addClass("card-subtitle").text("Water temp: " + jsonData.hours[i].waterTemperature.noaa);
@@ -104,6 +104,7 @@ function newfunction(lat, lng) {
       let secondarySwellDirectionEl = $("<p>").addClass("card-subtitle").text("Secondary swell direction: " + jsonData.hours[i].secondarySwellDirection.noaa)
 
       // append object data to results 
+      // check overflow (scroll hidden auto or visible) CSS out
       $(".results").append(cardBody.append(dateEl, timeEl, watertemp, windspeed, gustEl, windDirectionEl, wavePeriodEl, waveHeightEl, swellPeriodEl, swellHeightEl, swellDirectionEl, windWavePeriodEl, windWaveHeightEl, windWaveDirectionEl, secondarySwellPeriodEl, secondarySwellHeightEl, secondarySwellDirectionEl));
 
     }
@@ -120,7 +121,7 @@ function renderButtons() {
 }
 
 function initMap() {
-  var myLatlng = { lat: -25.363, lng: 131.044 };
+  var myLatlng = { lat: 37.7749, lng: -122.4194 };
 
   var map = new google.maps.Map(
     document.getElementById('map'), { zoom: 4, center: myLatlng });
@@ -144,6 +145,8 @@ function initMap() {
     console.log(coordsArr);
     var lat = coordsArr[0];
     var lng = coordsArr[1];
+
+    
 
     // make api call here to take in lat lng
     newfunction(lat, lng)
