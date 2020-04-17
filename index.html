@@ -30,19 +30,65 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
+               
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">Activities</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Fishing</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Surfing</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Swimming</a>
+                <style>
+                    /* Style The Dropdown Button */
+                    .dropbtn {
+                      background-color: #4CAF50;
+                      color: white;
+                      padding: 16px;
+                      font-size: 16px;
+                      border: none;
+                      cursor: pointer;
+                    }
+                    
+                    /* The container <div> - needed to position the dropdown content */
+                    .dropdown {
+                      position: relative;
+                      display: inline-block;
+                    }
+                    
+                    /* Dropdown Content (Hidden by Default) */
+                    .dropdown-content {
+                      display: none;
+                      position: absolute;
+                      background-color: #f9f9f9;
+                      min-width: 160px;
+                      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                      z-index: 1;
+                    }
+                    
+                    /* Links inside the dropdown */
+                    .dropdown-content a {
+                      color: black;
+                      padding: 12px 16px;
+                      text-decoration: none;
+                      display: block;
+                    }
+                    
+                    /* Change color of dropdown links on hover */
+                    .dropdown-content a:hover {background-color: #f1f1f1}
+                    
+                    /* Show the dropdown menu on hover */
+                    .dropdown:hover .dropdown-content {
+                      display: block;
+                    }
+                    
+                    /* Change the background color of the dropdown button when the dropdown content is shown */
+                    .dropdown:hover .dropbtn {
+                      background-color: #1b752e;
+                    }
+                    </style>
+                    
+                    <div class="dropdown">
+                      <button class="dropbtn">Timeline</button>
+                      <div class="dropdown-content">
+                        <a href="#">6 hours</a>
+                        <a href="#">12 hours</a>
+                        <a href="#">24 hours</a>
+                      </div>
+                    </div>
             </ul>
         </div>
     </nav>
@@ -64,7 +110,7 @@
         </div>
     </div> -->
 
-    <!-- checkboxes-->
+<div class="container fluid"><!-- checkboxes-->
     <input type="checkbox" name="type" value="secondarySwellDirection" />secondarySwellDirection
     <input type="checkbox" name="type" value="secondarySwellHeight" />secondarySwellHeight
     <input type="checkbox" name="type" value="secondarySwellPeriod" />secondarySwellPeriod
@@ -74,29 +120,31 @@
 
     <input type="submit" id="submit">
 
-    <!-- Display results-->
-    <div class="row">
-
-        <div class="col-md-12" id="results">
-
-            <div class="card">
-                <h3>Results:</h3>
-
-                <div class="card-body results">
-                    
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <br>
-
     <div class="row">
         <h3></h3>
         <div id="map"></div>
     </div>
+
+    <!-- Display results-->
+    <div class="row">
+
+        <div class="col-md-12" id="results">
+            
+            <h3>Results:</h3>
+
+            <!-- <div class="card">
+
+            </div> -->
+            
+            <div class="row results">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <br>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
