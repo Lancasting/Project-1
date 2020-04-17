@@ -30,121 +30,50 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-               
-
-                <style>
-                    /* Style The Dropdown Button */
-                    .dropbtn {
-                      background-color: #4CAF50;
-                      color: white;
-                      padding: 16px;
-                      font-size: 16px;
-                      border: none;
-                      cursor: pointer;
-                    }
-                    
-                    /* The container <div> - needed to position the dropdown content */
-                    .dropdown {
-                      position: relative;
-                      display: inline-block;
-                    }
-                    
-                    /* Dropdown Content (Hidden by Default) */
-                    .dropdown-content {
-                      display: none;
-                      position: absolute;
-                      background-color: #f9f9f9;
-                      min-width: 160px;
-                      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                      z-index: 1;
-                    }
-                    
-                    /* Links inside the dropdown */
-                    .dropdown-content a {
-                      color: black;
-                      padding: 12px 16px;
-                      text-decoration: none;
-                      display: block;
-                    }
-                    
-                    /* Change color of dropdown links on hover */
-                    .dropdown-content a:hover {background-color: #f1f1f1}
-                    
-                    /* Show the dropdown menu on hover */
-                    .dropdown:hover .dropdown-content {
-                      display: block;
-                    }
-                    
-                    /* Change the background color of the dropdown button when the dropdown content is shown */
-                    .dropdown:hover .dropbtn {
-                      background-color: #1b752e;
-                    }
-                    </style>
-                    
-                    <div class="dropdown">
-                      <button class="dropbtn">Timeline</button>
-                      <div class="dropdown-content">
+                <div class="dropdown">
+                    <button class="dropbtn">Timeline</button>
+                    <div class="dropdown-content">
                         <a href="#">6 hours</a>
                         <a href="#">12 hours</a>
                         <a href="#">24 hours</a>
-                      </div>
                     </div>
+                </div>
             </ul>
         </div>
     </nav>
 
     <br>
 
-    <!-- search bar -->
+    <div class="container fluid">
 
-    <!-- <div class="row">
-        <div class="col-md-2">
-            <div class="input-group md-form form-sm form-2 pl-0">
-                <input class="form-control my-0 py-1 red-border" id="search-text" type="text" placeholder="Search"
-                    aria-label="Search">
-                <div class="input-group-append">
-                    <button class="input-group-text red lighten-3" id="search-button"><i class="fa fa-search text-grey"
-                            aria-hidden="true"></i></buton>
-                </div>
-            </div>
+        <!-- checkboxes && submit button
+        <input type="checkbox" name="type" value="secondarySwellDirection" />secondarySwellDirection
+        <input type="checkbox" name="type" value="secondarySwellHeight" />secondarySwellHeight
+        <input type="checkbox" name="type" value="secondarySwellPeriod" />secondarySwellPeriod
+        <input type="checkbox" name="type" value="windWaveDirection" />windWaveDirection
+
+        <br>
+
+        <input type="submit" id="submit"> -->
+
+        <div class="row">
+            <div id="map"></div>
         </div>
-    </div> -->
-
-<div class="container fluid"><!-- checkboxes-->
-    <input type="checkbox" name="type" value="secondarySwellDirection" />secondarySwellDirection
-    <input type="checkbox" name="type" value="secondarySwellHeight" />secondarySwellHeight
-    <input type="checkbox" name="type" value="secondarySwellPeriod" />secondarySwellPeriod
-    <input type="checkbox" name="type" value="windWaveDirection" />windWaveDirection
 
     <br>
 
-    <input type="submit" id="submit">
+        <!-- Display results-->
+        <div class="row">
 
-    <div class="row">
-        <h3></h3>
-        <div id="map"></div>
-    </div>
+            <div class="col-md-12" id="results">
 
-    <!-- Display results-->
-    <div class="row">
+                <h3>Results:</h3>
 
-        <div class="col-md-12" id="results">
-            
-            <h3>Results:</h3>
-
-            <!-- <div class="card">
-
-            </div> -->
-            
-            <div class="row results">
+                <div class="row results"></div>
             </div>
+
         </div>
-
     </div>
-</div>
-
-    <br>
-
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -161,7 +90,6 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA60E-7YODoqYm16Aanxh8PoR4OXJugr_U&callback=initMap">
         </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
 
 </body>
 
