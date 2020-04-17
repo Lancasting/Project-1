@@ -16,7 +16,6 @@ body  {
     
 }
 
-
 .nav-link {
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -33,26 +32,25 @@ body  {
     height: 400px;
     background-color: grey;
 }
-.dropdown {
-    /* Style The Dropdown Button */
-}
-    .dropbtn {
+
+.dropbtn {
       background-color: #4CAF50;
       color: white;
       padding: 16px;
       font-size: 16px;
       border: none;
       cursor: pointer;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
     
-    /* The container <div> - needed to position the dropdown content */
-    .dropdown {
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
       position: relative;
       display: inline-block;
     }
     
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
       display: none;
       position: absolute;
       background-color: #f9f9f9;
@@ -61,37 +59,45 @@ body  {
       z-index: 1;
     }
     
-    /* Links inside the dropdown */
-    .dropdown-content a {
+/* Links inside the dropdown */
+.dropdown-content a {
       color: black;
       padding: 12px 16px;
       text-decoration: none;
       display: block;
     }
     
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {background-color: #f1f1f1}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
     
-    /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
       display: block;
     }
     
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
       background-color: #3e8e41;
     }
   
-
-
 .card-subtitle {
-    font-size: small;
+    font-size: medium;
 }
 
 .results {
   overflow: scroll;
   height: 500px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 #results{
   background-color: white;
+}
+
+.title-text {
+    font-weight: bold;
+    font-size: larger;
+}
+
+h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

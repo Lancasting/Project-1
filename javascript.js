@@ -3,52 +3,27 @@
 // Jonathan's Stormglass API key: f08e28ca-793c-11ea-a900-0242ac130002-f08e2a5a-793c-11ea-a900-0242ac130002
 // Jordan's Stormglass API key: 4470429a-793b-11ea-98e7-0242ac130002-4470434e-793b-11ea-98e7-0242ac130002
 
-// open weather API to grab latitude and longitude coordinates
+// *Push all checked item boxes into array*
+// var checkboxes = document.querySelectorAll("input[type=checkbox]");
+// var submit = document.getElementById("submit");
 
-// var APIKeyOpenWeather = "&appid=d67d379f19decbcad97f1f7549ca59f8"
-// // var city = $("#search-text").val()
-// // console.log(city)
-// var city = "San Clemente"
+// function getChecked() {
+//   var userParams = [];
 
-// var queryURLOpenWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + APIKeyOpenWeather
+//   for (var i = 0; i < checkboxes.length; i++) {
+//     var checkbox = checkboxes[i];
+//     if (checkbox.checked) userParams.push(checkbox.value);
+//   }
 
-// $.ajax({
-//   url: queryURLOpenWeather,
-//   method: "GET"
-// }).then(function (response) {
-//   console.log(response);
-//   console.log(response.coord.lon)
-//   console.log(response.coord.lat);;
-//   var lng = response.coord.lon
-//   console.log(lng);
-//   var lat = response.coord.lat
-//   console.log(lat);
-// })
+//   return userParams;
+// }
 
+// submit.addEventListener("click", function () {
+//   var checked = getChecked();
+//   console.log(checked);
+// });
 
-// Push all checked item boxes into array
-
-var checkboxes = document.querySelectorAll("input[type=checkbox]");
-var submit = document.getElementById("submit");
-
-function getChecked() {
-  var userParams = [];
-
-  for (var i = 0; i < checkboxes.length; i++) {
-    var checkbox = checkboxes[i];
-    if (checkbox.checked) userParams.push(checkbox.value);
-  }
-
-  return userParams;
-}
-
-submit.addEventListener("click", function () {
-  var checked = getChecked();
-  console.log(checked);
-});
-
-// This fetches the data from our storm glass API
-
+// Stormglass API call
 function newfunction(lat, lng) {
 
   var APIKey = "8aca6f50-7acf-11ea-98e7-0242ac130002-8aca6ff0-7acf-11ea-98e7-0242ac130002"
@@ -72,58 +47,51 @@ function newfunction(lat, lng) {
     for (let i = 0; i < 24; i++) {
       // use for 6 hour or 12 or 24
       let dateArr = jsonData.hours[i].time.split('T')
-      console.log(dateArr);
-      console.log(dateArr[1]) //consoles time
-
-      dateArrTime = dateArr[1].substring(0, dateArr[1].length - 9); //removes strings from time to display as "00:00". can be used for easier conversion to MST
-      console.log(dateArrTime);
+      dateArrTime = dateArr[1].substring(0, dateArr[1].length - 9); // removes strings from time to display as "00:00".
       dateArrDate = moment(dateArr[0]).format("MMM Do YYYY"); // changes date format to month/day/year
-      // if (!fiveDay[dateArr[0]]) {
-      //   fiveDay[dateArr[0]] = jsonData.hours[i];
-      // }
+      let waveHeightFt = jsonData.hours[i].waveHeight.icon * 3.281 //convert from meters to ft
 
-      console.log(jsonData.hours[i]);
+      console.log(jsonData.hours[i]); //logs object data for [i]
 
       let cardBody = $("<div>").addClass("card-body col-md-4")
-      let dateEl = $("<p>").addClass("title-text").text(dateArrDate); // date
-      let timeEl = $("<p>").addClass("title-text").text(dateArrTime); // time
-      let watertemp = $("<p>").addClass("card-subtitle").text("Water temp: " + jsonData.hours[i].waterTemperature.noaa);
-      let windspeed = $("<p>").addClass("card-subtitle").text("Wind speed: " + jsonData.hours[i].windSpeed.icon + " MPH");
-      let gustEl = $("<p>").addClass("card-subtitle").text("Gust: " + jsonData.hours[i].gust.noaa)
+      let dateEl = $("<p>").addClass("title-text").text(dateArrDate);
+      let timeEl = $("<p>").addClass("title-text").text(dateArrTime);
+      let watertemp = $("<p>").addClass("card-subtitle").text("Water temp: " + jsonData.hours[i].waterTemperature.noaa + " °C");
+      let windspeed = $("<p>").addClass("card-subtitle").text("Wind speed: " + jsonData.hours[i].windSpeed.icon + " (m/s)");
+      let gustEl = $("<p>").addClass("card-subtitle").text("Gust: " + jsonData.hours[i].gust.noaa + " (m/s)")
       let windDirectionEl = $("<p>").addClass("card-subtitle").text("Wind direction: " + jsonData.hours[i].windDirection.icon)
       let wavePeriodEl = $("<p>").addClass("card-subtitle").text("Wave period: " + jsonData.hours[i].wavePeriod.icon)
-      let waveHeightEl = $("<p>").addClass("card-subtitle").text("Wave height: " + jsonData.hours[i].waveHeight.icon)
+      let waveHeightEl = $("<p>").addClass("card-subtitle").text("Wave height: " + waveHeightFt + " ft")
       let swellPeriodEl = $("<p>").addClass("card-subtitle").text("Swell period: " + jsonData.hours[i].swellPeriod.icon)
-      let swellHeightEl = $("<p>").addClass("card-subtitle").text("Swell height: " + jsonData.hours[i].swellHeight.icon)
+      let swellHeightEl = $("<p>").addClass("card-subtitle").text("Swell height: " + jsonData.hours[i].swellHeight.icon + " meters")
       let swellDirectionEl = $("<p>").addClass("card-subtitle").text("Swell  direction: " + jsonData.hours[i].swellDirection.icon)
       let windWavePeriodEl = $("<p>").addClass("card-subtitle").text("Wind wave period: " + jsonData.hours[i].windWavePeriod.icon)
-      let windWaveHeightEl = $("<p>").addClass("card-subtitle").text("Wind wave height: " + jsonData.hours[i].windWaveHeight.icon)
+      let windWaveHeightEl = $("<p>").addClass("card-subtitle").text("Wind wave height: " + jsonData.hours[i].windWaveHeight.icon + " meters")
       let windWaveDirectionEl = $("<p>").addClass("card-subtitle").text("Wind wave direction: " + jsonData.hours[i].windWaveDirection.icon)
       let secondarySwellPeriodEl = $("<p>").addClass("card-subtitle").text("Secondary swell period: " + jsonData.hours[i].secondarySwellPeriod.noaa)
       let secondarySwellHeightEl = $("<p>").addClass("card-subtitle").text("Secondary swell height: " + jsonData.hours[i].secondarySwellHeight.noaa)
-      let secondarySwellDirectionEl = $("<p>").addClass("card-subtitle").text("Secondary swell direction: " + jsonData.hours[i].secondarySwellDirection.noaa)
+      let secondarySwellDirectionEl = $("<p>").addClass("card-subtitle").text("Secondary swell direction: " + jsonData.hours[i].secondarySwellDirection.noaa + " meters")
 
       let difficulty = ""
-      if(jsonData.hours[i].waveHeight.icon < 5) {
+      if (waveHeightFt < 5) {
         difficulty = "beginner"
+
       }
-      else if (jsonData.hours[i].waveHeight.icon >5 && jsonData.hours[i].waveHeight.icon <12) {
-        difficulty= "intermediate"
+      else if (waveHeightFt > 5 && waveHeightFt < 12) {
+        difficulty = "intermediate"
       }
       else {
         difficulty = "advanced"
-
       }
 
       let progress = $("<div>").addClass("progress");
-      let progressBar = $("<div>").addClass("progress-bar").attr("style", "width: " + jsonData.hours[i].waveHeight.icon*5 + "%").text(difficulty);
+      let progressBar = $("<div>").addClass("progress-bar").attr("style", "width: " + waveHeightFt * 10 + "%").text(difficulty);
 
       // append object data to results 
       $(".results").append(cardBody.append(dateEl, timeEl, watertemp, windspeed, gustEl, windDirectionEl, wavePeriodEl, waveHeightEl, swellPeriodEl, swellHeightEl, swellDirectionEl, windWavePeriodEl, windWaveHeightEl, windWaveDirectionEl, secondarySwellPeriodEl, secondarySwellHeightEl, secondarySwellDirectionEl, progress.append(progressBar)));
 
-      
-
     }
+
     console.log(fiveDay)
     console.log(jsonData); //displays object data in console
 
@@ -136,6 +104,7 @@ function renderButtons() {
   $(".results").empty();
 }
 
+// Google Maps API
 function initMap() {
   var myLatlng = { lat: 37.7749, lng: -122.4194 };
 
@@ -161,8 +130,6 @@ function initMap() {
     console.log(coordsArr);
     var lat = coordsArr[0];
     var lng = coordsArr[1];
-
-    
 
     // make api call here to take in lat lng
     newfunction(lat, lng)
