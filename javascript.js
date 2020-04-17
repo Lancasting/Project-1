@@ -103,9 +103,25 @@ function newfunction(lat, lng) {
       let secondarySwellHeightEl = $("<p>").addClass("card-subtitle").text("Secondary swell height: " + jsonData.hours[i].secondarySwellHeight.noaa)
       let secondarySwellDirectionEl = $("<p>").addClass("card-subtitle").text("Secondary swell direction: " + jsonData.hours[i].secondarySwellDirection.noaa)
 
+      let difficulty = ""
+      if(jsonData.hours[i].waveHeight.icon < 5) {
+        difficulty = "beginner"
+      }
+      else if (jsonData.hours[i].waveHeight.icon >5 && jsonData.hours[i].waveHeight.icon <12) {
+        difficulty= "intermediate"
+      }
+      else {
+        difficulty = "advanced"
+
+      }
+
+      let progress = $("<div>").addClass("progress");
+      let progressBar = $("<div>").addClass("progress-bar").attr("style", "width: " + jsonData.hours[i].waveHeight.icon*5 + "%").text(difficulty);
+
       // append object data to results 
-      // check overflow (scroll hidden auto or visible) CSS out
-      $(".results").append(cardBody.append(dateEl, timeEl, watertemp, windspeed, gustEl, windDirectionEl, wavePeriodEl, waveHeightEl, swellPeriodEl, swellHeightEl, swellDirectionEl, windWavePeriodEl, windWaveHeightEl, windWaveDirectionEl, secondarySwellPeriodEl, secondarySwellHeightEl, secondarySwellDirectionEl));
+      $(".results").append(cardBody.append(dateEl, timeEl, watertemp, windspeed, gustEl, windDirectionEl, wavePeriodEl, waveHeightEl, swellPeriodEl, swellHeightEl, swellDirectionEl, windWavePeriodEl, windWaveHeightEl, windWaveDirectionEl, secondarySwellPeriodEl, secondarySwellHeightEl, secondarySwellDirectionEl, progress.append(progressBar)));
+
+      
 
     }
     console.log(fiveDay)
