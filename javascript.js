@@ -53,7 +53,7 @@ function newfunction(lat, lng) {
 
       console.log(jsonData.hours[i]); //logs object data for [i]
 
-      let cardBody = $("<div>").addClass("card-body col-md-4")
+      let cardBody = $("<div>").addClass("card-body card results-cards col-md-4")
       let dateEl = $("<p>").addClass("title-text").text(dateArrDate);
       let timeEl = $("<p>").addClass("title-text").text(dateArrTime);
       let watertemp = $("<p>").addClass("card-subtitle").text("Water temp: " + jsonData.hours[i].waterTemperature.noaa + " °C");

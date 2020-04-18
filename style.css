@@ -89,8 +89,10 @@ body  {
   height: 500px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+
 #results{
-  background-color: white;
+  color: white;
 }
 
 .title-text {
@@ -100,4 +102,9 @@ body  {
 
 h3 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.results-cards {
+  padding: 45px;
+  background-color: #1f4e73;
 }
