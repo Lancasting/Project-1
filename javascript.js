@@ -51,7 +51,7 @@ function newfunction(lat, lng) {
       dateArrDate = moment(dateArr[0]).format("MMM Do YYYY"); // changes date format to month/day/year
       let waveHeightFt = jsonData.hours[i].waveHeight.icon * 3.281 //convert from meters to ft
 
-      console.log(jsonData.hours[i]); //logs object data for [i]
+      // console.log(jsonData.hours[i]); //logs object data for [i]
 
       let cardBody = $("<div>").addClass("card-body card results-cards col-md-4")
       let dateEl = $("<p>").addClass("title-text").text(dateArrDate);
@@ -92,8 +92,8 @@ function newfunction(lat, lng) {
 
     }
 
-    console.log(fiveDay)
-    console.log(jsonData); //displays object data in console
+    // console.log(fiveDay)
+    // console.log(jsonData); //displays object data in console
 
   });
 
@@ -127,7 +127,7 @@ function initMap() {
     infoWindow.open(map);
     var coords = mapsMouseEvent.latLng.toString().substring(1);
     var coordsArr = coords.substring(0, coords.length - 1).split(', ');
-    console.log(coordsArr);
+    // console.log(coordsArr);
     var lat = coordsArr[0];
     var lng = coordsArr[1];
 
