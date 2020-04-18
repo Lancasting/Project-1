@@ -26,7 +26,7 @@
 // Stormglass API call
 function newfunction(lat, lng) {
 
-  var APIKey = "8aca6f50-7acf-11ea-98e7-0242ac130002-8aca6ff0-7acf-11ea-98e7-0242ac130002"
+  var APIKey = "f08e28ca-793c-11ea-a900-0242ac130002-f08e2a5a-793c-11ea-a900-0242ac130002"
 
   const params = [
     'secondarySwellDirection', 'secondarySwellHeight', 'secondarySwellPeriod',
